@@ -1,11 +1,17 @@
-from fastapi import FastAPI
+from app.api import api_router
+from fastapi import FastAPI, APIRouter
+import uvicorn
 
 app = FastAPI()
 
-@app.get('/')
+root_router = APIRouter()
+
+@root_router.get('/')
 def root():
     return {'message': 'welcome'}
 
-@app.get('/square')
-def square(n: float):
-    return n**2
+app.include_router(api_router)
+app.include_router(root_router)
+
+if __name__ == '__main__':
+    uvicorn.run(app, log_level="debug")

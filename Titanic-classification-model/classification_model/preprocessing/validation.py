@@ -31,7 +31,7 @@ class TitanicInputSchema(BaseModel):
     fare: float
     cabin: str
     embarked: str
-    title: str
+    name: t.Optional[str]
     ticket: t.Optional[str]
     boat: t.Optional[t.Union[str, int]]
     body: t.Optional[int]
