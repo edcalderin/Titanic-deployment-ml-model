@@ -1,8 +1,8 @@
 import uvicorn
-from loguru import logger
 from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
+from loguru import logger
 
 from app.api import api_router
 from app.config import settings, setup_and_logging
@@ -12,6 +12,7 @@ app = FastAPI()
 root_router = APIRouter()
 
 setup_and_logging(settings)
+
 
 @root_router.get("/")
 def index() -> HTMLResponse:
@@ -39,5 +40,5 @@ if settings.BACKEND_CORS_ORIGINS:
     )
 
 if __name__ == "__main__":
-    logger.debug('Debugging from Developing mode')
-    uvicorn.run(app, host='localhost', port=8081, log_level="debug")
+    logger.debug("Debugging from Developing mode")
+    uvicorn.run(app, host="localhost", port=8081, log_level="debug")

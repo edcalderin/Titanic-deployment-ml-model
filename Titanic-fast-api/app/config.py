@@ -1,8 +1,9 @@
 import logging
-from loguru import logger
 import sys
-from typing import List
+from types import FrameType
+from typing import List, cast
 
+from loguru import logger
 from pydantic import AnyHttpUrl, BaseSettings
 
 
@@ -28,6 +29,7 @@ class Settings(BaseSettings):
     class Config:
         case_sensitive = True
 
+
 class InterceptHandler(logging.Handler):
     def emit(self, record):
         # Get corresponding Loguru level if it exists.
@@ -39,12 +41,20 @@ class InterceptHandler(logging.Handler):
         # Find caller from where originated the logged message.
         frame, depth = sys._getframe(6), 6
         while frame and frame.f_code.co_filename == logging.__file__:
-            frame = frame.f_back
+            frame = cast(FrameType, frame.f_back)
             depth += 1
 
-        logger.opt(depth=depth, exception=record.exc_info).log(level, record.getMessage())
+        logger.opt(depth=depth, exception=record.exc_info).log(
+            level, record.getMessage()
+        )
+
 
 def setup_and_logging(config: Settings):
-    logging.basicConfig(handlers=[InterceptHandler(level=config.logging.LOGGING_LEVEL)], level=config.logging.LOGGING_LEVEL, force=True)
+    logging.basicConfig(
+        handlers=[InterceptHandler(level=config.logging.LOGGING_LEVEL)],
+        level=config.logging.LOGGING_LEVEL,
+        force=True,
+    )
+
 
 settings = Settings()
