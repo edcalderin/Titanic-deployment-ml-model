@@ -11,7 +11,7 @@ DESCRIPTION = "Example Titanic classification model package"
 README = "README.md"
 REQUIRES_PYTHON = ">=3.7"
 
-HOMEPAGE = "https://github.com/edcalderin/deployment-titanic-classification-model"
+HOMEPAGE = "https://github.com/edcalderin/Titanic-deployment-ml-model"
 
 PACKAGE_ROOT = Path(__file__).resolve().parent
 PACKAGE_DIR = PACKAGE_ROOT/'classification_model'
