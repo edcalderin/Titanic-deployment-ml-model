@@ -43,14 +43,15 @@ def find_config_file() -> Path:
 
 
 def load_config_from_yaml(config_path: Optional[Path] = None) -> YAML:
-    if not config_path:
-        config_path = find_config_file()
+    try:
+        if not config_path:
+            config_path = find_config_file()
 
-    with open(config_path) as file:
-        config = load(file.read()).data
-        return config
-
-    raise OSError(f"Did not find config file at path {config_path}")
+        with open(config_path) as file:
+            config = load(file.read()).data
+            return config
+    except FileNotFoundError:
+        raise OSError(f"Did not find config file at path {config_path}")
 
 
 def create_and_validate_config(

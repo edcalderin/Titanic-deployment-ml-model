@@ -1,7 +1,7 @@
 import typing as t
 
 import pandas as pd
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel, Field, ValidationError
 
 from classification_model.config.core import config
 from classification_model.preprocessing.data_manager import pre_pipeline_preparation
@@ -35,6 +35,7 @@ class TitanicInputSchema(BaseModel):
     ticket: t.Optional[str]
     boat: t.Optional[t.Union[str, int]]
     body: t.Optional[int]
+    home_dest: t.Optional[str] = Field(alias="home.dest")
 
 
 class MultipleTitanicDataInputs(BaseModel):

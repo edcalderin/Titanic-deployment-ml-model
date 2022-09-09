@@ -27,5 +27,5 @@ def make_prediction(input_data: t.Union[pd.DataFrame, dict]) -> dict:
     results = {"predictions": None, "version": _version, "errors": errors}
     if not errors:
         predictions = titanic_pipe.predict(data)
-        results = {"predictions": predictions, "version": _version, "errors": errors}
+        results = {"predictions": list(predictions), "version": _version, "errors": errors}
     return results

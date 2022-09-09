@@ -28,20 +28,21 @@ def list_requirements():
 setup(
         name=NAME,
         version=about['__version__'],
-        package_data={'classification_model': ['VERSION']},
-        packages=find_packages(),
         description=DESCRIPTION,
         long_description=long_description,
         long_description_content_type="text/markdown",
-        url=HOMEPAGE,
         author=AUTHORS,
         author_email=AUTHOR_EMAIL,
-        license="MIT",
         python_requires=REQUIRES_PYTHON,
+        url=HOMEPAGE,
+        packages=find_packages(),
+        package_data={'classification_model': ['VERSION']},
+        install_requires=list_requirements(),
+        include_package_data=True,
+        license="MIT",
         classifiers=[
             "License :: OSI Approved :: MIT License",
             "Programming Language :: Python :: 3",
             "Programming Language :: Python :: 3.7",
         ],
-        install_requires=list_requirements()
 )
