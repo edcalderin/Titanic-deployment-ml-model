@@ -4,10 +4,13 @@ jobs:
   hello-job:
     docker:
       - image: alpine3.15
+        auth:
+          username: $DOCKERHUB_USERNANME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - run: 
           name: the first step
-          command: | 
+          command:
             echo 'hello world'
 
 workflows:
