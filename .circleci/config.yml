@@ -12,4 +12,4 @@ jobs:
           name: the first step
           command: |
             echo $DOCKERHUB_USERNAME
-            echo 'first steps with CircleCI'
+            echo `ls -al`
