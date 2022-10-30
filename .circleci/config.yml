@@ -7,8 +7,8 @@ jobs:
     steps:
       - run: 
         name: the first step
-          command: | 
-            echo 'hello world'
+        command: | 
+          echo 'hello world'
 
 workflows:
   my-workflow:
