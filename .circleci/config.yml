@@ -32,6 +32,8 @@ jobs:
             echo 'Files in my repo'
   
   Using-Node:
+    docker:
+      - image: cimg/base:2021.04
     steps:
       - run:
           name: Running the Node container
@@ -68,6 +70,3 @@ workflows:
       - Now-Complete:
           requires:
             - Hold-for-Approval
-
-      
-
