@@ -49,8 +49,8 @@ workflows:
     jobs:
       - Hello-World
       - Fetch-code:
-          - requires: Hello-World
+          requires: Hello-World
       - Using-Node:
-          - requires: Fetch-code
+          requires: Hello-World
       
 
