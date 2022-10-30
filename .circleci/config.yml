@@ -12,7 +12,7 @@ jobs:
       - run: 
           name: build step
           command: |
-            echo $DOCKERHUB_USERNAME
+            echo $DOCKERHUB_USERNAM
             echo Hello
       - run:
           name: The Second Step
