@@ -30,3 +30,27 @@ jobs:
           command: |
             ls -al
             echo 'Files in my repo'
+  
+  Using-Node:
+    docker:
+      - image: cimg/node:17.2
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    
+    steps:
+      - run:
+          name: Running the Node container
+          command: 
+            node -v
+
+workflows:
+  Example-worflow:
+    jobs:
+      - Hello-World
+      - Fetch-code:
+          - requires: Hello-World
+      - Using-Node:
+          - requires: Hello-World
+      
+
