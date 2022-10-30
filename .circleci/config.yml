@@ -33,7 +33,7 @@ jobs:
   
   Using-Node:
     docker:
-      - image: cimg/base:2021.04
+      - image: cimg/node:17.2
     steps:
       - run:
           name: Running the Node container
