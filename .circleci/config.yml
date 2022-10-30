@@ -32,17 +32,23 @@ jobs:
             echo 'Files in my repo'
   
   Using-Node:
-    docker:
-      - image: cimg/node:17.2
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-    
     steps:
       - run:
           name: Running the Node container
           command: 
-            node -v
+            node -v # Node version here
+
+  Now-Complete:
+    docker:
+      - image: alpine:3.15
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - run:
+          name: Approval complete
+          command: 
+            echo "The work is now complete."
 
 workflows:
   Example-worflow:
@@ -54,5 +60,14 @@ workflows:
       - Using-Node:
           requires: 
             - Hello-World
+      - Hold-for-Approval:
+          type: approval
+          requires:
+            - Fetch-code
+            - Using-Node
+      - Now-Complete:
+          requires:
+            - Hold-for-Approval
+
       
 
