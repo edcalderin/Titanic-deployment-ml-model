@@ -1,7 +1,9 @@
 version: 2.1
 
 jobs:
-  build:  
+  build: 
+    docker:
+      - image: alpine:3.15
     steps:
       - run: 
           name: the first step
