@@ -4,6 +4,9 @@ jobs:
   build: 
     docker:
       - image: alpine:3.15
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - run: 
           name: the first step
