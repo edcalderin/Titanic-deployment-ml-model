@@ -6,9 +6,9 @@ jobs:
       - image: alpine3.15
     steps:
       - run: 
-        name: the first step
-        command: | 
-          echo 'hello world'
+          name: the first step
+          command: | 
+            echo 'hello world'
 
 workflows:
   my-workflow:
