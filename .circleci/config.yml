@@ -1,12 +1,9 @@
 version: 2.1
 
 jobs:
-  hello-job:
-  
+  build:  
     steps:
       - run: 
           name: the first step
           command:
-            echo $DOCKERHUB_PASSWORD
-
-workloads:
+            echo 'dfdf'
