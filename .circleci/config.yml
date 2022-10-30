@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  hello-job: 
+  build: 
     docker:
       - image: alpine:3.15
         auth:
@@ -10,5 +10,6 @@ jobs:
     steps:
       - run: 
           name: the first step
-          command:
+          command: 
             echo $DOCKERHUB_USERNAME
+            echo 'first steps with CircleCI'
