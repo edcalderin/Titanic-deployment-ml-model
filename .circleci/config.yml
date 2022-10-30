@@ -12,8 +12,3 @@ jobs:
           name: the first step
           command:
             echo 'hello world'
-
-workflows:
-  my-workflow:
-    jobs:
-      - hello-job
