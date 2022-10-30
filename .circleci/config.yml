@@ -10,6 +10,6 @@ jobs:
     steps:
       - run: 
           name: the first step
-          command: 
+          command: |
             echo $DOCKERHUB_USERNAME
             echo 'first steps with CircleCI'
