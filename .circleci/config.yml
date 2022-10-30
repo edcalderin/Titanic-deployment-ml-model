@@ -3,16 +3,15 @@ version: 2.1
 jobs:
   hello-job:
     docker:
-      - image: cimg/python:3.10.2
+      - image: alpine3.15
         auth:
           username: 
           password: 
     steps:
-      - checkout
       - run: 
         name: the first step
           command: | 
-            echo "hello world"
+            echo 'hello world'
 
 workflows:
   my-workflow:
