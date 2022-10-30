@@ -2,13 +2,11 @@ version: 2.1
 
 jobs:
   hello-job:
-    docker:
-      - image: alpine3.15
-        auth:
-          username: $DOCKERHUB_USERNANME
-          password: $DOCKERHUB_PASSWORD
+  
     steps:
       - run: 
           name: the first step
           command:
-            echo 'hello world'
+            echo $DOCKERHUB_PASSWORD
+
+workloads:
