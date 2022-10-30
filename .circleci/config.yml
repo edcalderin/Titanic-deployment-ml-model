@@ -1,7 +1,18 @@
 version: 2.1
 
 jobs:
-  build: 
+  Hello-World:
+    docker:
+      - image: cimg/base:2021.04
+    steps:
+      - run:
+          name: Hello world step
+          command: |
+            echo Here I am!!
+            ps -s 
+            echo Process running now!!
+
+  Fetch-code: 
     docker:
       - image: cimg/base:2021.04
         auth:
