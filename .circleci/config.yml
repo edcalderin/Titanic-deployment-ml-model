@@ -2,7 +2,17 @@ version: 2.1
 
 jobs:
   hello-job:
-    commands: echo "hello world"
+    docker:
+      - image: cimg/python:3.10.2
+        auth:
+          username: 
+          password: 
+    steps:
+      - checkout
+      - run: 
+        name: the first step
+          command: | 
+            echo "hello world"
 
 workflows:
   my-workflow:
