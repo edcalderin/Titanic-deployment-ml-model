@@ -16,6 +16,6 @@ jobs:
             echo Hello
       - run:
           name: The Second Step
-          command:
+          command: |
             ls -al
             echo 'Files in my repo'
