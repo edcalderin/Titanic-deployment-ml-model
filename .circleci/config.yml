@@ -1,9 +1,15 @@
 version: 2.1
+executors:
+  - executor_base:
+      docker:
+      - image: cimg/base:2021.04
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
 
 jobs:
   Hello-World:
-    docker:
-      - image: cimg/base:2021.04
+    executor: executor_base
     steps:
       - run:
           name: Hello world step
@@ -13,11 +19,7 @@ jobs:
             echo Process running now!!
 
   Fetch-code: 
-    docker:
-      - image: cimg/base:2021.04
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: executor_base
     steps:
       - checkout
       - run: 
