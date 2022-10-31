@@ -1,11 +1,12 @@
 version: 2.1
+
 executors:
-  - executor_base:
-      docker:
-        - image: cimg/base:2021.04
-          auth:
-            username: $DOCKERHUB_USERNAME
-            password: $DOCKERHUB_PASSWORD
+  executor_base:
+    docker:
+      - image: cimg/base:2021.04
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
 
 jobs:
   Hello-World:
