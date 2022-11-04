@@ -18,7 +18,7 @@ jobs:
     working_directory: ~/project/ci-and-publishing/Titanic-fast-api
     steps:
       - checkout:
-        path: ~/project
+          path: ~/project
       - *prepare_tox
       - run:
           name: Running app tests
