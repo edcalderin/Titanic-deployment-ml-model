@@ -21,7 +21,7 @@ jobs:
       - *prepare_tox
       - run:
           name: Running app tests
-          commands:
+          command:
             tox
         
 workflows:
