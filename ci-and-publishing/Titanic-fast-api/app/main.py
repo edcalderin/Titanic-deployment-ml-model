@@ -41,4 +41,4 @@ if settings.BACKEND_CORS_ORIGINS:
 
 if __name__ == "__main__":
     logger.debug("Debugging from Developing mode")
-    uvicorn.run(app, host="localhost", port=8081, log_level="debug")
+    uvicorn.run(app, host="localhost", port=8001, log_level="debug")
