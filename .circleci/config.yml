@@ -8,7 +8,7 @@ defaults: &defaults
 prepare_tox: &prepare_tox
   run:
     name: Installing tox
-    commands: |
+    command: |
       sudo pip install --upgrade pip
       pip install --user tox
 
