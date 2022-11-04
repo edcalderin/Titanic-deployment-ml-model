@@ -1,75 +1,29 @@
 version: 2.1
 
-executors:
-  executor_base:
-    docker:
-      - image: cimg/base:2021.04
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+defaults: &defaults
+  docker:
+    - image: circleci/python:3.9.5
+  working_directory: ~/project
+
+prepare_tox: &prepare_tox
+  run:
+    name: Installing tox
+    commands: |
+      sudo pip install --upgrade pip
+      pip install --user tox
 
 jobs:
-  Hello-World:
-    executor: executor_base
-    steps:
-      - run:
-          name: Hello world step
-          command: |
-            echo Here I am!!
-            ps -s 
-            echo Process running now!!
-
-  Fetch-code: 
-    executor: executor_base
+  test_app: 
+    <<: *defaults
+    working_directory: ~/project/ci-and-publishing/Titanic-fast-api
     steps:
       - checkout
-      - run: 
-          name: build step
-          command: |
-            echo $DOCKERHUB_USERNAM
-            echo Hello
+      - *prepare_tox
       - run:
-          name: The Second Step
-          command: |
-            ls -al
-            echo 'Files in my repo'
-  
-  Using-Node:
-    docker:
-      - image: cimg/node:17.2
-    steps:
-      - run:
-          name: Running the Node container
-          command: 
-            node -v # Node version here
-
-  Now-Complete:
-    docker:
-      - image: alpine:3.15
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - run:
-          name: Approval complete
-          command: 
-            echo "The work is now complete."
-
+          name: Running app tests
+          commands:
+            tox
+        
 workflows:
-  Example-worflow:
-    jobs:
-      - Hello-World
-      - Fetch-code:
-          requires: 
-            - Hello-World
-      - Using-Node:
-          requires: 
-            - Hello-World
-      - Hold-for-Approval:
-          type: approval
-          requires:
-            - Fetch-code
-            - Using-Node
-      - Now-Complete:
-          requires:
-            - Hold-for-Approval
+  jobs:
+    - test_app   
