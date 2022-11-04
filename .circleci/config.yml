@@ -14,8 +14,8 @@ prepare_tox: &prepare_tox
 
 jobs:
   test_app: 
-    <<: *defaults
     working_directory: ~/project/ci-and-publishing/Titanic-fast-api
+    <<: *defaults
     steps:
       - checkout:
           path: ~/project
