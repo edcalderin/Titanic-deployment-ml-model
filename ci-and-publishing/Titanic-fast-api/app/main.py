@@ -1,4 +1,3 @@
-import uvicorn
 from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
@@ -41,4 +40,6 @@ if settings.BACKEND_CORS_ORIGINS:
 
 if __name__ == "__main__":
     logger.debug("Debugging from Developing mode")
+    import uvicorn
+
     uvicorn.run(app, host="localhost", port=8000, log_level="debug")
