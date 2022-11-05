@@ -35,6 +35,21 @@ jobs:
           command:
             git subtree push --prefix ci-and-publishing/Titanic-fast-api https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
+  test_and_upload_classification_model:
+    <<: *defaults
+    steps:
+      - checkout:
+          path: ~/project
+      - *prepare_tox
+      - run:
+          name: Test the model
+          command:
+            tox
+      - run:
+          name: Publish model to Gemfury
+          command:
+            tox -e publish_model
+
 workflows:
   my-worflow:
     jobs:
@@ -42,3 +57,7 @@ workflows:
       - deploy_to_heroku:
           requires:
             - test_app
+      - test_and_upload_classification_model:
+          requires:
+            - deploy_to_heroku
+
