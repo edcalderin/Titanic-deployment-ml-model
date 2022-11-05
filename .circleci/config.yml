@@ -29,7 +29,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout:
-        path: ~/project
+          path: ~/project
       - *prepare_tox
       - run:
           name: Deploying to heroku
