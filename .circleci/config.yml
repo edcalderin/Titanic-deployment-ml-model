@@ -58,7 +58,12 @@ workflows:
       - deploy_to_heroku:
           requires:
             - test_app
+          filters:
+            branches:
+              only:
+                master
       - test_and_upload_classification_model:
           requires:
-            - deploy_to_heroku
+            - test_app
+          
 
