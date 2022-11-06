@@ -77,7 +77,7 @@ jobs:
       - run:
           name: Release to Heroku
           command:
-            cd deploying-with-container && make push-ml-api-heroku
+            cd deploying-with-container && make relase-ml-api-heroku
 
 workflows:
   my-worflow:
