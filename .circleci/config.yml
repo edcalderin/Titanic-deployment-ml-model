@@ -62,6 +62,8 @@ workflows:
             branches:
               only:
                 master
-      - test_and_upload_classification_model:
+      - test_and_upload_classification_model
+          requires:
+            - test_app
           
 
