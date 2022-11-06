@@ -63,9 +63,5 @@ workflows:
               only:
                 master
       - test_and_upload_classification_model:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^.*/
+          
 
