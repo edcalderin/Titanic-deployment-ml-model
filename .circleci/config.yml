@@ -66,15 +66,15 @@ jobs:
           name: Build Image
           command: |
             sudo curl https://cli-assets.heroku.com/install.sh | sh
-            cd deploy_app_cointainer_in_heroku && make build-ml-api-heroku
+            cd deploying-with-container && make build-ml-api-heroku
       - run:
           name: Push Image to Heroku
           command:
-            cd deploy_app_cointainer_in_heroku && make push-ml-api-heroku
+            cd deploying-with-container && make push-ml-api-heroku
       - run:
           name: Release to Heroku
           command:
-            cd deploy_app_cointainer_in_heroku && make push-ml-api-heroku
+            cd deploying-with-container && make push-ml-api-heroku
 
 workflows:
   my-worflow:
